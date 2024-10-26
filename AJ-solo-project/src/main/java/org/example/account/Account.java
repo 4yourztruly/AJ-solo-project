@@ -16,10 +16,12 @@ public class Account {
 
     public void addTransaction(Transaction transaction) {
         transactions.add(transaction);
+        this.balance += transaction.getPrice();
     }
 
     public void removeTransaction(Transaction transaction) {
         transactions.remove(transaction);
+        this.balance -= transaction.getPrice();
     }
 
     public String getUsername() {

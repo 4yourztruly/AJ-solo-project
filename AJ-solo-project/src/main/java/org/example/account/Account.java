@@ -39,10 +39,4 @@ public class Account {
     public int getBalance() {
         return balance;
     }
-
-    public void addBalance(int balance) {
-        this.balance += balance;
-    }
-
-
 }

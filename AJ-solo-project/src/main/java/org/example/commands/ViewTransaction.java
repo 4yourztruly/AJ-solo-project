@@ -15,4 +15,9 @@ public class ViewTransaction extends Command{
             System.out.println(transaction.getName() + ", " + transaction.getPrice() + "kr" + ", " + transaction.getDate());
         }
     }
+
+    @Override
+    public String description() {
+        return "View Transaction";
+    }
 }

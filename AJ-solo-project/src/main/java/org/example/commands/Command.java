@@ -14,4 +14,5 @@ public abstract class Command {
     public String getName(){
         return name;
     }
+    public abstract String description();
 }

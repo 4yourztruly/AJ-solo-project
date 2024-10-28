@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class Menu {
     private static final Scanner scanner  = new Scanner(System.in);
-    private Dependencies dependencies;
+    private final Dependencies dependencies;
 
     public Menu(Dependencies dependencies) {
         this.dependencies = dependencies;

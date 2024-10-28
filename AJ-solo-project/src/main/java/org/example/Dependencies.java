@@ -5,6 +5,7 @@ import org.example.account.AccountManager;
 import org.example.account.AccountManagerFile;
 import org.example.account.Transaction;
 import org.example.commands.*;
+import org.example.menu.Menu;
 
 import java.time.LocalDate;
 
@@ -27,6 +28,25 @@ public class Dependencies {
         commandManager.addCommand(removeTransaction);
         AddTransaction addTransaction = new AddTransaction("at");
         commandManager.addCommand(addTransaction);
+        Logout logout = new Logout("l",this);
+        commandManager.addCommand(logout);
+        Command help = new Command("help") {
+            @Override
+            public void execute(Account account) {
+                for(Command command : commandManager.getCommands()) {
+                    System.out.println(command.getName()+ " " + command.description());
+                }
+            }
+
+            @Override
+            public String description() {
+                return "Help";
+            }
+        };
+        commandManager.addCommand(help);
+        Menu menu = new Menu(this);
+        menu.greetMenu();
+
 
     }
 

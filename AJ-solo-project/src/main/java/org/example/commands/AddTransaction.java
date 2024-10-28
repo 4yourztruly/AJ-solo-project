@@ -1,6 +1,5 @@
 package org.example.commands;
 
-import org.example.Dependencies;
 import org.example.account.Account;
 import org.example.account.Transaction;
 
@@ -28,5 +27,10 @@ public class AddTransaction extends Command{
         System.out.println("added " + transaction.getName());
 
 
+    }
+
+    @Override
+    public String description() {
+        return "Add Transaction";
     }
 }

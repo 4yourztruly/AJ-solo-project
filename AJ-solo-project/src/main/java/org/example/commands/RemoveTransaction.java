@@ -29,4 +29,9 @@ public class RemoveTransaction extends Command{
             System.out.println("Item does not exist");
         }
     }
+
+    @Override
+    public String description() {
+        return "Remove Transaction";
+    }
 }

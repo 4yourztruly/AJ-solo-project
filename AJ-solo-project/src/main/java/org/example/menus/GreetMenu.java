@@ -2,6 +2,7 @@ package org.example.menus;
 
 import org.example.dependencies.Dependencies;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class GreetMenu extends Menu{
@@ -31,6 +32,7 @@ public class GreetMenu extends Menu{
 
         if(greetInput.equalsIgnoreCase("exit")) {
             System.out.println("Exiting!");
+            dependencies.getSaveFile().save();
         }
     }
 }

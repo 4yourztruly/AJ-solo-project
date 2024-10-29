@@ -2,6 +2,8 @@ package org.example.menus;
 
 import org.example.dependencies.Dependencies;
 
+import java.io.IOException;
+
 public abstract class Menu {
     private final String name;
     protected Dependencies dependencies;

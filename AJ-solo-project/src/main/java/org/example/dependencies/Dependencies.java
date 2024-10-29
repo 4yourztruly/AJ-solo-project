@@ -3,6 +3,8 @@ package org.example.dependencies;
 import org.example.menuManager.MenuManager;
 import org.example.menuManager.MenuManagerList;
 import org.example.menus.*;
+import org.example.save.Save;
+import org.example.save.SaveToFile;
 import org.example.simpleClasses.Account;
 import org.example.accountManager.AccountManager;
 import org.example.accountManager.AccountManagerList;
@@ -11,17 +13,20 @@ import org.example.commandManager.CommandListManager;
 import org.example.commandManager.CommandManager;
 import org.example.commands.*;
 
+import java.io.IOException;
 import java.time.LocalDate;
 
 public class Dependencies {
     private final AccountManager accountManager;
     private final CommandManager commandManager;
     private final MenuManager menuManager;
+    private final Save save;
 
     public Dependencies() {
         this.accountManager = new AccountManagerList();
         this.commandManager = new CommandListManager();
         this.menuManager = new MenuManagerList();
+        this.save = new SaveToFile(this);
         Account account = new Account("tim","tim");
         accountManager.addAccount(account);
         Transaction transaction = new Transaction("item", 300, LocalDate.of(2002,12,10));
@@ -53,11 +58,10 @@ public class Dependencies {
         GreetMenu greetMenu = new GreetMenu("Greet Menu", this);
         LoginMenu loginMenu = new LoginMenu("Login Menu", this);
         SignupMenu signupMenu = new SignupMenu("Signup Menu", this);
-        //MainMenu mainMenu = new MainMenu("Main Menu", this);
         menuManager.addMenu(greetMenu);
         menuManager.addMenu(loginMenu);
         menuManager.addMenu(signupMenu);
-        //menuManager.addMenu(mainMenu);
+        save.load();
         menuManager.getMenu("Greet Menu").display();
     }
 
@@ -71,5 +75,9 @@ public class Dependencies {
 
     public MenuManager getMenuManager() {
         return menuManager;
+    }
+
+    public Save getSaveFile() {
+        return save;
     }
 }

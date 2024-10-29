@@ -2,11 +2,12 @@ package org.example.accountManager;
 
 import org.example.simpleClasses.Account;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Optional;
 
-public class AccountManagerList implements AccountManager{
-    private final ArrayList<Account> accounts = new ArrayList<>();
+public class AccountManagerList implements AccountManager, Serializable {
+    private ArrayList<Account> accounts = new ArrayList<>();
 
     public void addAccount(Account account) {
         accounts.add(account);
@@ -23,5 +24,15 @@ public class AccountManagerList implements AccountManager{
             }
         }
         return Optional.empty();
+    }
+
+    @Override
+    public ArrayList<Account> getAccounts() {
+        return accounts;
+    }
+
+    @Override
+    public void loadAccounts(ArrayList<Account> accounts) {
+        this.accounts = accounts;
     }
 }

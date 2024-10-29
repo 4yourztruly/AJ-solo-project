@@ -1,8 +1,9 @@
 package org.example.simpleClasses;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Account {
+public class Account implements Serializable {
     private final String username;
     private final String password;
     private final ArrayList<Transaction>transactions = new ArrayList<>();

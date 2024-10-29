@@ -1,8 +1,9 @@
 package org.example.simpleClasses;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Transaction {
+public class Transaction implements Serializable {
     private final String name;
     private final int price;
     private final LocalDate date;

@@ -1,9 +1,11 @@
-package org.example.account;
+package org.example.accountManager;
+
+import org.example.simpleClasses.Account;
 
 import java.util.ArrayList;
 import java.util.Optional;
 
-public class AccountManagerFile implements AccountManager{
+public class AccountManagerList implements AccountManager{
     private final ArrayList<Account> accounts = new ArrayList<>();
 
     public void addAccount(Account account) {

@@ -1,11 +1,10 @@
 package org.example.commands;
 
-import org.example.Dependencies;
-import org.example.account.Account;
-import org.example.menu.Menu;
+import org.example.dependencies.Dependencies;
+import org.example.simpleClasses.Account;
 
 public class Logout extends Command{
-    Dependencies dependencies;
+    private final Dependencies dependencies;
 
     public Logout(String name, Dependencies dependencies) {
         super(name);
@@ -15,8 +14,7 @@ public class Logout extends Command{
     @Override
     public void execute(Account account) {
         System.out.println("Logging you out!");
-        Menu menu = new Menu(dependencies);
-        menu.greetMenu();
+        dependencies.getMenuManager().getMenu("Greet Menu").display();
     }
 
     @Override

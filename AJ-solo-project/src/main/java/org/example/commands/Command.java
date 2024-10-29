@@ -1,6 +1,6 @@
 package org.example.commands;
 
-import org.example.account.Account;
+import org.example.simpleClasses.Account;
 
 public abstract class Command {
     String name;

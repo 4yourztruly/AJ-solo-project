@@ -1,7 +1,7 @@
 package org.example.commands;
 
-import org.example.account.Account;
-import org.example.account.Transaction;
+import org.example.simpleClasses.Account;
+import org.example.simpleClasses.Transaction;
 
 import java.time.LocalDate;
 import java.util.Scanner;

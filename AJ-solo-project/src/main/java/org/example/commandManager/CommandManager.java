@@ -1,4 +1,6 @@
-package org.example.commands;
+package org.example.commandManager;
+
+import org.example.commands.Command;
 
 import java.util.ArrayList;
 

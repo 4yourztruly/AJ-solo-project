@@ -10,9 +10,4 @@ public class SaveToFile implements Save{
     public void load() {
 
     }
-
-    @Override
-    public void delete() {
-
-    }
 }

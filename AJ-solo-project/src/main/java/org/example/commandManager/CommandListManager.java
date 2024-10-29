@@ -1,8 +1,10 @@
-package org.example.commands;
+package org.example.commandManager;
+
+import org.example.commands.Command;
 
 import java.util.ArrayList;
 
-public class CommandListManager implements CommandManager{
+public class CommandListManager implements CommandManager {
     private final ArrayList<Command>commands = new ArrayList<>();
 
     @Override

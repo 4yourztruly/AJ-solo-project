@@ -1,21 +1,27 @@
-package org.example;
+package org.example.dependencies;
 
-import org.example.account.Account;
-import org.example.account.AccountManager;
-import org.example.account.AccountManagerFile;
-import org.example.account.Transaction;
+import org.example.menuManager.MenuManager;
+import org.example.menuManager.MenuManagerList;
+import org.example.menus.*;
+import org.example.simpleClasses.Account;
+import org.example.accountManager.AccountManager;
+import org.example.accountManager.AccountManagerList;
+import org.example.simpleClasses.Transaction;
+import org.example.commandManager.CommandListManager;
+import org.example.commandManager.CommandManager;
 import org.example.commands.*;
-import org.example.menu.Menu;
 
 import java.time.LocalDate;
 
 public class Dependencies {
     private final AccountManager accountManager;
     private final CommandManager commandManager;
+    private final MenuManager menuManager;
 
     public Dependencies() {
-        this.accountManager = new AccountManagerFile();
+        this.accountManager = new AccountManagerList();
         this.commandManager = new CommandListManager();
+        this.menuManager = new MenuManagerList();
         Account account = new Account("tim","tim");
         accountManager.addAccount(account);
         Transaction transaction = new Transaction("item", 300, LocalDate.of(2002,12,10));
@@ -44,10 +50,15 @@ public class Dependencies {
             }
         };
         commandManager.addCommand(help);
-        Menu menu = new Menu(this);
-        menu.greetMenu();
-
-
+        GreetMenu greetMenu = new GreetMenu("Greet Menu", this);
+        LoginMenu loginMenu = new LoginMenu("Login Menu", this);
+        SignupMenu signupMenu = new SignupMenu("Signup Menu", this);
+        //MainMenu mainMenu = new MainMenu("Main Menu", this);
+        menuManager.addMenu(greetMenu);
+        menuManager.addMenu(loginMenu);
+        menuManager.addMenu(signupMenu);
+        //menuManager.addMenu(mainMenu);
+        menuManager.getMenu("Greet Menu").display();
     }
 
     public AccountManager getAccountManager() {
@@ -56,5 +67,9 @@ public class Dependencies {
 
     public CommandManager getCommandManager() {
         return commandManager;
+    }
+
+    public MenuManager getMenuManager() {
+        return menuManager;
     }
 }

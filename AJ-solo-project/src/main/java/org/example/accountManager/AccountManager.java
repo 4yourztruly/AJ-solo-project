@@ -1,4 +1,6 @@
-package org.example.account;
+package org.example.accountManager;
+
+import org.example.simpleClasses.Account;
 
 import java.util.Optional;
 

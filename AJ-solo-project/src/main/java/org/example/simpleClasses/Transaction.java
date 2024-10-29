@@ -25,4 +25,9 @@ public class Transaction implements Serializable {
     public LocalDate getDate() {
         return date;
     }
+
+    @Override
+    public String toString() {
+        return name + " " + price + "kr " + date;
+    }
 }

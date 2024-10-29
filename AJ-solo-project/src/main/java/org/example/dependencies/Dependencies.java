@@ -13,6 +13,7 @@ import org.example.commandManager.CommandListManager;
 import org.example.commandManager.CommandManager;
 import org.example.commands.*;
 
+import javax.swing.text.View;
 import java.io.IOException;
 import java.time.LocalDate;
 
@@ -27,10 +28,12 @@ public class Dependencies {
         this.commandManager = new CommandListManager();
         this.menuManager = new MenuManagerList();
         this.save = new SaveToFile(this);
+
         Account account = new Account("tim","tim");
         accountManager.addAccount(account);
         Transaction transaction = new Transaction("item", 300, LocalDate.of(2002,12,10));
         account.addTransaction(transaction);
+
         ViewTransaction viewTransaction = new ViewTransaction("vt");
         commandManager.addCommand(viewTransaction);
         Transaction transaction1 = new Transaction("item2",500, LocalDate.of(2005, 12,9));
@@ -41,6 +44,9 @@ public class Dependencies {
         commandManager.addCommand(addTransaction);
         Logout logout = new Logout("l",this);
         commandManager.addCommand(logout);
+        ViewYear viewYear = new ViewYear("vy");
+        commandManager.addCommand(viewYear);
+
         Command help = new Command("help") {
             @Override
             public void execute(Account account) {

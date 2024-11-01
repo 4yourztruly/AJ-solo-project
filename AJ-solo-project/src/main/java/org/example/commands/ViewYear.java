@@ -21,7 +21,7 @@ public class ViewYear extends Command{
         LocalDate parsedDate = LocalDate.parse(date);
         List<Transaction> sortedByYear = account.getTransactions().stream()
                 .filter(transaction -> transaction.getDate().getYear() == parsedDate.getYear())
-                .collect(Collectors.toList());
+                .toList();
         System.out.println();
         if(sortedByYear.isEmpty()) {
             System.out.println("Entered year is empty! ");

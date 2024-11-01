@@ -21,7 +21,7 @@ public class ViewMonth extends Command{
         LocalDate parsedDate = LocalDate.parse(date);
         List<Transaction> sortedByMonth = account.getTransactions().stream()
                 .filter(transaction -> transaction.getDate().getMonth() == parsedDate.getMonth())
-                .collect(Collectors.toList());
+                .toList();
         System.out.println();
         if(sortedByMonth.isEmpty()) {
             System.out.println("Entered month is empty! ");

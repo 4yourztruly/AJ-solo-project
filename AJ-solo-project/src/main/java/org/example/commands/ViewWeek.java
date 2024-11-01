@@ -23,7 +23,7 @@ public class ViewWeek extends Command{
         List<Transaction> sortedByWeek = account.getTransactions().stream()
                 .filter(transaction ->transaction
                         .getDate().get(WeekFields.of(Locale.getDefault()).weekOfWeekBasedYear()) == week)
-                .collect(Collectors.toList());
+                .toList();
         System.out.println();
         if(sortedByWeek.isEmpty()) {
             System.out.println("Entered week is empty! ");

@@ -21,7 +21,7 @@ public class ViewDay extends Command{
         LocalDate parsedDate = LocalDate.parse(date);
         List<Transaction> sortedByDay = account.getTransactions().stream()
                 .filter(transaction -> transaction.getDate().getDayOfMonth() == parsedDate.getDayOfMonth())
-                .collect(Collectors.toList());
+                .toList();
         System.out.println();
         if(sortedByDay.isEmpty()) {
             System.out.println("Entered day is empty! ");

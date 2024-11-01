@@ -46,6 +46,12 @@ public class Dependencies {
         commandManager.addCommand(logout);
         ViewYear viewYear = new ViewYear("vy");
         commandManager.addCommand(viewYear);
+        ViewMonth viewMonth = new ViewMonth("vm");
+        commandManager.addCommand(viewMonth);
+        ViewDay viewDay = new ViewDay("vd");
+        commandManager.addCommand(viewDay);
+        ViewWeek viewWeek = new ViewWeek("vw");
+        commandManager.addCommand(viewWeek);
 
         Command help = new Command("help") {
             @Override

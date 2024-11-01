@@ -18,11 +18,20 @@ public class ViewMonth extends Command{
     public void execute(Account account) {
         System.out.println("Enter a date yyyy-mm-dd: ");
         String date = scanner.nextLine();
-        LocalDate parsedDate = LocalDate.parse(date);
+        LocalDate parsedDate;
+
+        try {
+            parsedDate = LocalDate.parse(date);
+        } catch (Exception e) {
+            System.out.println("Please enter a date in the correct format!");
+            return;
+        }
+
         List<Transaction> sortedByMonth = account.getTransactions().stream()
                 .filter(transaction -> transaction.getDate().getMonth() == parsedDate.getMonth())
                 .toList();
         System.out.println();
+
         if(sortedByMonth.isEmpty()) {
             System.out.println("Entered month is empty! ");
             System.out.println();

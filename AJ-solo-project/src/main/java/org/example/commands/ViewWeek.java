@@ -19,7 +19,21 @@ public class ViewWeek extends Command{
     @Override
     public void execute(Account account) {
         System.out.println("Enter a week number: ");
-        int week = scanner.nextInt();
+        String weekString = scanner.nextLine();
+        int week;
+
+        try {
+            week = Integer.parseInt(weekString);
+        } catch (Exception e) {
+            System.out.println("Please enter a number!");
+            return;
+        }
+
+        if(week > 53) {
+            System.out.println("Please enter a number 1-53!");
+            return;
+        }
+
         List<Transaction> sortedByWeek = account.getTransactions().stream()
                 .filter(transaction ->transaction
                         .getDate().get(WeekFields.of(Locale.getDefault()).weekOfWeekBasedYear()) == week)

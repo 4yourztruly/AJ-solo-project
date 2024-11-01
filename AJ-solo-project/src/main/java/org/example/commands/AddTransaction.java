@@ -20,8 +20,21 @@ public class AddTransaction extends Command{
         String price = scanner.nextLine();
         System.out.println("Enter date of purchase in format yyyy-mm-dd: ");
         String date = scanner.nextLine();
-        LocalDate newDate = LocalDate.parse(date);
-        int newPrice = Integer.parseInt(price);
+        LocalDate newDate = null;
+        try {
+            newDate = LocalDate.parse(date);
+        } catch (Exception e) {
+            System.out.println("Please enter a date in the correct format!");
+            return;
+        }
+        int newPrice = 0;
+        try {
+            newPrice = Integer.parseInt(price);
+        } catch (Exception e) {
+            System.out.println("Please enter a number as the price!");
+            return;
+        }
+
         Transaction transaction = new Transaction(name,newPrice,newDate);
         account.addTransaction(transaction);
         System.out.println("added " + transaction.getName());

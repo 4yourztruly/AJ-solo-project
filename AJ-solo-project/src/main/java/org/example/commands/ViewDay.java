@@ -1,5 +1,6 @@
 package org.example.commands;
 
+import org.example.main.PersonalFinance;
 import org.example.simpleClasses.Account;
 import org.example.simpleClasses.Transaction;
 
@@ -18,16 +19,26 @@ public class ViewDay extends Command{
     public void execute(Account account) {
         System.out.println("Enter a date yyyy-mm-dd: ");
         String date = scanner.nextLine();
-        LocalDate parsedDate = LocalDate.parse(date);
+        LocalDate parsedDate;
+
+        try {
+            parsedDate = LocalDate.parse(date);
+        } catch (Exception e) {
+            System.out.println("Please enter a date in the correct format!");
+            return;
+        }
+
         List<Transaction> sortedByDay = account.getTransactions().stream()
                 .filter(transaction -> transaction.getDate().getDayOfMonth() == parsedDate.getDayOfMonth())
                 .toList();
         System.out.println();
+
         if(sortedByDay.isEmpty()) {
             System.out.println("Entered day is empty! ");
             System.out.println();
             return;
         }
+
         sortedByDay.forEach(System.out::println);
         System.out.println();
 

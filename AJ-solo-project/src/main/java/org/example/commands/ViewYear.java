@@ -18,7 +18,13 @@ public class ViewYear extends Command{
     public void execute(Account account) {
         System.out.println("Enter a date yyyy-mm-dd: ");
         String date = scanner.nextLine();
-        LocalDate parsedDate = LocalDate.parse(date);
+        LocalDate parsedDate;
+        try{
+            parsedDate = LocalDate.parse(date);
+        } catch (Exception e) {
+            System.out.println("Please enter a date in the correct format!");
+            return;
+        }
         List<Transaction> sortedByYear = account.getTransactions().stream()
                 .filter(transaction -> transaction.getDate().getYear() == parsedDate.getYear())
                 .toList();

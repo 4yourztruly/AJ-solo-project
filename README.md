@@ -1,0 +1,1 @@
+Improvements for next project : more generic packages with simpler names/no camelCase. Ex. commands including commandManager and commandManagerList. Changing Save to Saveable to make it easier to understand. 
